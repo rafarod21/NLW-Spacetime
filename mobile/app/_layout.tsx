@@ -4,6 +4,8 @@ import { StatusBar } from 'expo-status-bar'
 import { SplashScreen, Stack } from 'expo-router'
 import { ImageBackground } from 'react-native'
 import * as SecureStore from 'expo-secure-store'
+import dayjs from 'dayjs'
+import ptBr from 'dayjs/locale/pt-br'
 import {
   useFonts,
   Roboto_400Regular,
@@ -13,6 +15,8 @@ import { BaiJamjuree_700Bold } from '@expo-google-fonts/bai-jamjuree'
 
 import blurBg from '../src/assets/bg-blur.png'
 import Stripes from '../src/assets/stripes.svg'
+
+dayjs.locale(ptBr)
 
 const StyledStripes = styled(Stripes)
 
@@ -50,11 +54,12 @@ export default function Layout() {
         screenOptions={{
           headerShown: false,
           contentStyle: { backgroundColor: 'transparent' },
+          animation: 'fade',
         }}
       >
         <Stack.Screen name="index" redirect={isUserAuthenticated} />
-        <Stack.Screen name="new" />
         <Stack.Screen name="memories" />
+        <Stack.Screen name="new" />
       </Stack>
     </ImageBackground>
   )
